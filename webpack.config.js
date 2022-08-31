@@ -5,7 +5,7 @@ module.exports = {
   entry: "./src/index.js",
   output: {
     path: path.resolve(__dirname, "./dist"),
-    filename: "bundle.js",
+    filename: "index_bundle.js",
   },
   mode: "development",
   plugins: [
@@ -38,6 +38,9 @@ module.exports = {
     ],
   },
   devServer: {
+    static: path.resolve(__dirname, "src/templates"),
     port: 8080,
+    open: true,
+    hot: true,
   },
 };
