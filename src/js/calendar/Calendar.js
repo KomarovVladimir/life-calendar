@@ -13,13 +13,9 @@ export class Calendar {
   }
 
   draw = () => {
-    try {
-      for (let year = 0; year < this.#lifeExpectancy; year++) {
-        //TODO: Replace "32" with a real number of passed weeks
-        this.#yearWeeks.draw(year, 32);
-      }
-    } catch (error) {
-      console.error(error);
+    for (let year = 0; year < this.#lifeExpectancy; year++) {
+      //TODO: Replace "32" with a real number of passed weeks
+      this.#yearWeeks.draw(year, 32);
     }
   };
 }

@@ -16,31 +16,23 @@ export class Mark {
   getSize = () => this.#size;
 
   drawEmpty = (x, y) => {
-    try {
-      this.#ctx.strokeRect(
-        x + this.#fieldOffset,
-        y + this.#fieldOffset,
-        this.#fieldSize,
-        this.#fieldSize
-      );
-    } catch (error) {
-      console.error(error);
-    }
+    this.#ctx.strokeRect(
+      x + this.#fieldOffset,
+      y + this.#fieldOffset,
+      this.#fieldSize,
+      this.#fieldSize
+    );
   };
 
   drawFilled = (x, y) => {
-    try {
-      this.#ctx.beginPath();
-      this.#ctx.rect(
-        x + this.#fieldOffset,
-        y + this.#fieldOffset,
-        this.#fieldSize,
-        this.#fieldSize
-      );
-      this.#ctx.fill();
-      this.#ctx.stroke();
-    } catch (error) {
-      console.error(error);
-    }
+    this.#ctx.beginPath();
+    this.#ctx.rect(
+      x + this.#fieldOffset,
+      y + this.#fieldOffset,
+      this.#fieldSize,
+      this.#fieldSize
+    );
+    this.#ctx.fill();
+    this.#ctx.stroke();
   };
 }

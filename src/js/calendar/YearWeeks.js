@@ -13,14 +13,10 @@ export class YearWeeks {
   draw = (year, weeksPassed) => {
     const weeksLeft = this.#weeksTotal - weeksPassed;
 
-    try {
-      for (let i = 0; i < this.#weeksTotal; i++) {
-        i < weeksLeft
-          ? this.#mark.drawFilled(i * this.#markSize, year * this.#markSize)
-          : this.#mark.drawEmpty(i * this.#markSize, year * this.#markSize);
-      }
-    } catch (error) {
-      console.error(error);
+    for (let i = 0; i < this.#weeksTotal; i++) {
+      i < weeksLeft
+        ? this.#mark.drawFilled(i * this.#markSize, year * this.#markSize)
+        : this.#mark.drawEmpty(i * this.#markSize, year * this.#markSize);
     }
   };
 }
