@@ -1,29 +1,46 @@
 export class Mark {
-  strokeWidth = 1;
+  #size;
+  #fieldSize;
+  #fieldOffset;
+  #ctx;
 
   constructor({ size = 0, color = "#000000", ctx = null }) {
-    this.size = size;
-    this.halfSize = Math.floor(size / 2);
-    this.color = color;
-    this.ctx = ctx;
-    this.ctx.lineWidth = this.strokeWidth;
-    this.ctx.strokeStyle = this.color;
-    this.ctx.fillStyle = this.color;
+    this.#size = size;
+    this.#fieldSize = Math.floor(size / 2);
+    this.#fieldOffset = this.#fieldSize - Math.floor(this.#fieldSize / 2);
+    this.#ctx = ctx;
+    this.#ctx.strokeStyle = color;
+    this.#ctx.fillStyle = color;
   }
 
+  getSize = () => this.#size;
+
   drawEmpty = (x, y) => {
-    const markX = x + this.halfSize - Math.floor(this.halfSize / 2);
-    const markY = y + this.halfSize - Math.floor(this.halfSize / 2);
-    this.ctx.strokeRect(markX, markY, this.halfSize, this.halfSize);
+    try {
+      this.#ctx.strokeRect(
+        x + this.#fieldOffset,
+        y + this.#fieldOffset,
+        this.#fieldSize,
+        this.#fieldSize
+      );
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   drawFilled = (x, y) => {
-    const markX = x + this.halfSize - Math.floor(this.halfSize / 2);
-    const markY = y + this.halfSize - Math.floor(this.halfSize / 2);
-
-    this.ctx.beginPath();
-    this.ctx.rect(markX, markY, this.halfSize, this.halfSize);
-    this.ctx.fill();
-    this.ctx.stroke();
+    try {
+      this.#ctx.beginPath();
+      this.#ctx.rect(
+        x + this.#fieldOffset,
+        y + this.#fieldOffset,
+        this.#fieldSize,
+        this.#fieldSize
+      );
+      this.#ctx.fill();
+      this.#ctx.stroke();
+    } catch (error) {
+      console.error(error);
+    }
   };
 }
