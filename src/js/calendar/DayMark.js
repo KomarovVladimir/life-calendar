@@ -1,61 +1,29 @@
 export class DayMark {
-  strokeWidth = 2;
+  strokeWidth = 1;
 
-  constructor({
-    size = 0,
-    width = 0,
-    height = 0,
-    offset = 0,
-    x = 0,
-    y = 0,
-    color = "#ffffff",
-    filled = false,
-    ctx = null,
-  }) {
-    this.x = x;
-    this.y = y;
+  constructor({ size = 0, color = "#000000", ctx = null }) {
     this.size = size;
-    this.width = width;
-    this.height = height;
+    this.halfSize = Math.floor(size / 2);
     this.color = color;
-    this.filled = filled;
     this.ctx = ctx;
-    this.offset = offset;
-  }
-
-  move = (x, y) => {
-    this.x = x;
-    this.y = y;
-  };
-
-  drawEmpty = () => {
-    this.ctx.lineWidth = this.strokeWidth;
-    this.ctx.strokeStyle = this.color;
-
-    this.ctx.strokeRect(
-      this.x + this.offset,
-      this.y + this.offset,
-      this.size,
-      this.size
-    );
-  };
-
-  drawFilled = () => {
     this.ctx.lineWidth = this.strokeWidth;
     this.ctx.strokeStyle = this.color;
     this.ctx.fillStyle = this.color;
+  }
 
-    this.ctx.strokeRect(
-      this.x + this.offset,
-      this.y + this.offset,
-      this.size,
-      this.size
-    );
-    this.ctx.fillRect(
-      this.x + this.offset,
-      this.y + this.offset,
-      this.size,
-      this.size
-    );
+  drawEmpty = (x, y) => {
+    const markX = x + this.halfSize - Math.floor(this.halfSize / 2);
+    const markY = y + this.halfSize - Math.floor(this.halfSize / 2);
+    this.ctx.strokeRect(markX, markY, this.halfSize, this.halfSize);
+  };
+
+  drawFilled = (x, y) => {
+    const markX = x + this.halfSize - Math.floor(this.halfSize / 2);
+    const markY = y + this.halfSize - Math.floor(this.halfSize / 2);
+
+    this.ctx.beginPath();
+    this.ctx.rect(markX, markY, this.halfSize, this.halfSize);
+    this.ctx.fill();
+    this.ctx.stroke();
   };
 }
