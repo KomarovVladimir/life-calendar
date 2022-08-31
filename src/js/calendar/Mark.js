@@ -1,4 +1,4 @@
-export class DayMark {
+export class Mark {
   strokeWidth = 1;
 
   constructor({ size = 0, color = "#000000", ctx = null }) {
