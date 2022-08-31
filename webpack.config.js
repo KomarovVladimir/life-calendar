@@ -10,7 +10,9 @@ module.exports = {
   mode: "development",
   plugins: [
     new HtmlWebpackPlugin({
-      template: "src/templates/index.html",
+      template: "src/templates/index.ejs",
+      filename: "index.html",
+      title: "Life Chart",
     }),
   ],
   module: {
