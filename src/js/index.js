@@ -1,5 +1,5 @@
 import moment from "moment";
-import { Day } from "./calendar/Day";
+import { DayMark } from "./calendar/DayMark";
 
 const lifespan = 90;
 const age = 26;
@@ -11,12 +11,17 @@ export const daysLeft = moment.duration(lifespan - age, "years").asDays();
 const canvas = document.getElementById("calendar");
 const ctx = canvas.getContext("2d");
 
-const daySize = 10;
-const day = new Day({ size: daySize, offset: 4, ctx, color: "green" });
+const daySize = 7;
+const day = new DayMark({
+  ctx,
+  size: daySize,
+  offset: 4,
+  color: "green",
+});
 
 for (let i = 0; i < 100; i++) {
-  for (let j = 0; j < 300; j++) {
+  for (let j = 0; j < 100; j++) {
     day.move(daySize * i, daySize * j);
-    day.draw();
+    (i + j) % 2 ? day.drawFilled() : day.drawEmpty();
   }
 }
