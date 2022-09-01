@@ -5,8 +5,8 @@ export class YearWeeks {
   #markSize;
   #mark;
 
-  constructor({ ctx = null }) {
-    this.#mark = new Mark({ ctx, size: 16, color: "green" });
+  constructor({ markSize, color, ctx = null }) {
+    this.#mark = new Mark({ ctx, markSize, color });
     this.#markSize = this.#mark.getSize();
   }
 

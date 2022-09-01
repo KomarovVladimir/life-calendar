@@ -1,12 +1,16 @@
 import { Calendar } from "./Calendar";
+
+const WEEKS_NUMBER = 52;
+const YEARS_NUMBER = 90;
 export class Canvas {
   #canvas = document.createElement("canvas");
   #ctx = this.#canvas.getContext("2d");
-  #calendar = new Calendar({ ctx: this.#ctx });
+  #calendar;
 
-  constructor({ width = 0, height = 0 } = {}) {
-    this.#canvas.width = width;
-    this.#canvas.height = height;
+  constructor({ markSize, color } = {}) {
+    this.#canvas.width = markSize * WEEKS_NUMBER;
+    this.#canvas.height = markSize * YEARS_NUMBER;
+    this.#calendar = new Calendar({ markSize, color, ctx: this.#ctx });
   }
 
   render = (container) => {

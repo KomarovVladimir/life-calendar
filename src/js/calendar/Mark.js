@@ -1,19 +1,19 @@
 export class Mark {
-  #size;
+  #markSize;
   #fieldSize;
   #fieldOffset;
   #ctx;
 
-  constructor({ size = 0, color = "#000000", ctx = null }) {
-    this.#size = size;
-    this.#fieldSize = Math.floor(size / 2);
+  constructor({ markSize = 0, color = "#000000", ctx = null }) {
+    this.#markSize = markSize;
+    this.#fieldSize = Math.floor(markSize / 2);
     this.#fieldOffset = this.#fieldSize - Math.floor(this.#fieldSize / 2);
     this.#ctx = ctx;
     this.#ctx.strokeStyle = color;
     this.#ctx.fillStyle = color;
   }
 
-  getSize = () => this.#size;
+  getSize = () => this.#markSize;
 
   drawEmpty = (x, y) => {
     this.#ctx.strokeRect(

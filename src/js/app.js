@@ -19,7 +19,7 @@ console.log(
   moment.duration(lifespan - age, "years").asMonths()
 );
 
-const canvasItem = new Canvas({ width: 1440, height: 800 });
+const canvasItem = new Canvas({ markSize: 6, color: "DarkCyan" });
 
 const chartSection = document.getElementById("chart-section");
 canvasItem.render(chartSection);

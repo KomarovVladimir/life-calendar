@@ -7,8 +7,8 @@ export class Calendar {
   #yearWeeks;
 
   //TODO: Replace the birthday and the lifeExpectancy with dynamic data
-  constructor({ birthday, lifeExpectancy = 90, ctx }) {
-    this.#yearWeeks = new YearWeeks({ ctx });
+  constructor({ birthday, lifeExpectancy = 90, markSize, color, ctx }) {
+    this.#yearWeeks = new YearWeeks({ markSize, color, ctx });
     this.#lifeExpectancy = lifeExpectancy;
   }
 
