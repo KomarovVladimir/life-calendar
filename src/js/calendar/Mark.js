@@ -13,6 +13,8 @@ export class Mark {
     this.#ctx.fillStyle = color;
   }
 
+  getSize = () => this.#markSize;
+
   drawEmpty = (x, y) => {
     this.#ctx.strokeRect(
       x + this.#fieldOffset,
