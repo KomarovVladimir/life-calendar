@@ -7,7 +7,7 @@ export class Canvas {
   #ctx = this.#canvas.getContext("2d");
   #calendar;
 
-  constructor({ markSize, color } = {}) {
+  constructor({ markSize = 16, color } = {}) {
     this.#canvas.width = markSize * WEEKS_NUMBER;
     this.#canvas.height = markSize * YEARS_NUMBER;
     this.#calendar = new Calendar({ markSize, color, ctx: this.#ctx });

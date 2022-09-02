@@ -4,9 +4,9 @@ export class Mark {
   #fieldOffset;
   #ctx;
 
-  constructor({ markSize = 0, color = "#000000", ctx = null }) {
+  constructor({ markSize = 16, color = "#000000", ctx = null }) {
     this.#markSize = markSize;
-    this.#fieldSize = Math.floor(markSize / 2);
+    this.#fieldSize = Math.floor(this.#markSize / 2);
     this.#fieldOffset = this.#fieldSize - Math.floor(this.#fieldSize / 2);
     this.#ctx = ctx;
     this.#ctx.strokeStyle = color;
@@ -25,6 +25,7 @@ export class Mark {
   };
 
   drawFilled = (x, y) => {
+    console.log(this.#markSize, this.#fieldSize);
     this.#ctx.beginPath();
     this.#ctx.rect(
       x + this.#fieldOffset,
