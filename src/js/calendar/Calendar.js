@@ -1,21 +1,32 @@
 import moment from "moment";
 
-import { YearWeeks } from "./YearWeeks";
+import { Field } from "./Field";
+
+const TEMP_TOTAL = 23376;
+const TEMP_FILLED = 12000;
+const TEMP_PER_ROW = 67;
 
 export class Calendar {
-  #lifeExpectancy;
-  #yearWeeks;
+  // #lifeExpectancy;
+  #markSize;
+  #field;
 
   //TODO: Replace the birthday and the lifeExpectancy with dynamic data
   constructor({ birthday, lifeExpectancy = 90, markSize, color, ctx }) {
-    this.#yearWeeks = new YearWeeks({ markSize, color, ctx });
-    this.#lifeExpectancy = lifeExpectancy;
+    this.#markSize = markSize;
+    this.#field = new Field({
+      markProps: { size: markSize, color },
+      marks: { total: TEMP_TOTAL, filled: TEMP_FILLED, perRow: TEMP_PER_ROW },
+      ctx,
+    });
+    // this.#lifeExpectancy = lifeExpectancy;
   }
 
+  getWidth = () => this.#markSize * TEMP_PER_ROW;
+
+  getHeight = () => this.#markSize * Math.ceil(TEMP_TOTAL / TEMP_PER_ROW);
+
   draw = () => {
-    for (let year = 0; year < this.#lifeExpectancy; year++) {
-      //TODO: Replace "32" with a real number of passed weeks
-      this.#yearWeeks.draw(year, 32);
-    }
+    this.#field.draw();
   };
 }

@@ -8,9 +8,9 @@ export class Canvas {
   #calendar;
 
   constructor({ markSize = 16, color } = {}) {
-    this.#canvas.width = markSize * WEEKS_NUMBER;
-    this.#canvas.height = markSize * YEARS_NUMBER;
     this.#calendar = new Calendar({ markSize, color, ctx: this.#ctx });
+    this.#canvas.width = this.#calendar.getWidth();
+    this.#canvas.height = this.#calendar.getHeight();
   }
 
   render = (container) => {
