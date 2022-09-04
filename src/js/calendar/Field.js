@@ -7,8 +7,8 @@ export class Field {
   #mark;
 
   constructor({
-    markProps: { size, color },
-    marks: { total, filled, perRow },
+    markProps: { size, color } = {},
+    marks: { total, filled, perRow } = {},
     ctx = null,
   }) {
     this.#mark = new Mark({ ctx, size, color });
