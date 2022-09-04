@@ -1,30 +1,31 @@
-import moment from "moment";
-
 import { Field } from "./Field";
 
-const TEMP_TOTAL = 23376;
-const TEMP_FILLED = 12000;
-const TEMP_PER_ROW = 67;
-
+//TODO: Migrate to ts
 export class Calendar {
-  // #lifeExpectancy;
   #markSize;
+  #marksTotal;
+  #marksPerRow;
   #field;
 
-  //TODO: Replace the birthday and the lifeExpectancy with dynamic data
-  constructor({ birthday, lifeExpectancy = 90, markSize, color, ctx }) {
-    this.#markSize = markSize;
+  constructor({
+    marks: { filled, total, perRow },
+    markProps: { size, color },
+    ctx,
+  }) {
+    this.#markSize = size;
+    this.#marksPerRow = perRow;
+    this.#marksTotal = total;
     this.#field = new Field({
-      markProps: { size: markSize, color },
-      marks: { total: TEMP_TOTAL, filled: TEMP_FILLED, perRow: TEMP_PER_ROW },
+      marks: { total, filled, perRow },
+      markProps: { size, color },
       ctx,
     });
-    // this.#lifeExpectancy = lifeExpectancy;
   }
 
-  getWidth = () => this.#markSize * TEMP_PER_ROW;
+  getWidth = () => this.#markSize * this.#marksPerRow;
 
-  getHeight = () => this.#markSize * Math.ceil(TEMP_TOTAL / TEMP_PER_ROW);
+  getHeight = () =>
+    this.#markSize * Math.ceil(this.#marksTotal / this.#marksPerRow);
 
   draw = () => {
     this.#field.draw();
