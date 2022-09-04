@@ -1,4 +1,5 @@
 import { Field } from "./Field";
+import { Scale } from "./Scale";
 
 //TODO: Migrate to ts
 export class Calendar {
@@ -6,6 +7,7 @@ export class Calendar {
   #marksTotal;
   #marksPerRow;
   #field;
+  #scale;
 
   constructor({
     marks: { filled, total, perRow },
@@ -20,6 +22,12 @@ export class Calendar {
       markProps: { size, color },
       ctx,
     });
+    this.#scale = new Scale({
+      markSize: size,
+      horizontalMarkersNumber: perRow,
+      verticalMarkersNumber: perRow,
+      ctx,
+    });
   }
 
   getWidth = () => this.#markSize * this.#marksPerRow;
@@ -28,6 +36,6 @@ export class Calendar {
     this.#markSize * Math.ceil(this.#marksTotal / this.#marksPerRow);
 
   draw = () => {
-    this.#field.draw();
+    this.#scale.draw();
   };
 }
