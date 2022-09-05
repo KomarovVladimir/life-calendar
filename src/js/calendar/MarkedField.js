@@ -1,17 +1,11 @@
-import { Mark } from "./Mark";
-
-export class Field {
+export class MarkedField {
   #marksTotal;
   #marksPerRow;
   #marksFilled;
   #mark;
 
-  constructor({
-    markProps: { size, color } = {},
-    marks: { total, filled, perRow } = {},
-    ctx = null,
-  }) {
-    this.#mark = new Mark({ ctx, size, color });
+  constructor({ mark = null, marks: { total, filled, perRow } = {} }) {
+    this.#mark = mark;
     this.#marksTotal = total;
     this.#marksPerRow = perRow;
     this.#marksFilled = filled;
@@ -20,6 +14,7 @@ export class Field {
   draw = () => {
     let row = 0;
     let column = 0;
+
     for (let i = 0; i < this.#marksTotal; i++) {
       if (i % this.#marksPerRow === 0) {
         row++;

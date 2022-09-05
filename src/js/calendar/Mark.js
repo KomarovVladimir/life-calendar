@@ -15,6 +15,8 @@ export class Mark {
 
   getSize = () => this.#size;
 
+  getOffset = () => this.#fieldOffset;
+
   draw = (column, row, isFilled) => {
     if (isFilled) {
       this.#ctx.beginPath();

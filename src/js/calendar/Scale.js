@@ -1,24 +1,21 @@
 export class Scale {
   #ctx;
   #step;
-  // #type;
-  #markSize;
+  #mark;
   #verticalMarkersNumber;
   #horizontalMarkersNumber;
   #lineLength = 16;
 
   constructor({
-    // type = scaleTypes.horizontal,
     step = 5,
-    markSize,
-    verticalMarkersNumber,
-    horizontalMarkersNumber,
-    ctx,
+    mark = null,
+    verticalMarkersNumber = 0,
+    horizontalMarkersNumber = 0,
+    ctx = null,
   }) {
     this.#ctx = ctx;
-    // this.#type = type;
+    this.#mark = mark;
     this.#step = step;
-    this.#markSize = markSize;
     this.#verticalMarkersNumber = verticalMarkersNumber;
     this.#horizontalMarkersNumber = horizontalMarkersNumber;
   }
@@ -38,11 +35,15 @@ export class Scale {
   };
 
   draw = () => {
-    for (let i = 0; i < this.#verticalMarkersNumber; i++) {
-      this.#drawVerticalLine(i * this.#markSize + this.#markSize);
+    for (let i = 0; i < this.#verticalMarkersNumber; i += this.#step) {
+      this.#drawVerticalLine(
+        i * this.#mark.getSize() + this.#mark.getOffset() + this.#mark.getSize()
+      );
     }
-    for (let i = 0; i < this.#horizontalMarkersNumber; i++) {
-      this.#drawHorizontalLine(i * this.#markSize + this.#markSize);
+    for (let i = 0; i < this.#horizontalMarkersNumber; i += this.#step) {
+      this.#drawHorizontalLine(
+        i * this.#mark.getSize() + this.#mark.getOffset() + this.#mark.getSize()
+      );
     }
   };
 }
