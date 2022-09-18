@@ -3,6 +3,7 @@ import { Scale } from "./Scale";
 import { Mark } from "./Mark";
 
 //TODO: Migrate to ts
+//TODO: Add chart types
 export class Calendar {
   #marksTotal;
   #marksPerRow;

@@ -1,13 +1,21 @@
+import moment from "moment";
+
 import { Calendar } from "./Calendar";
 
-export class Canvas {
+export class LifeInWeeksCalendar {
   #canvas = document.createElement("canvas");
   #ctx = this.#canvas.getContext("2d");
   #calendar;
+  #weeksInYear = 52;
+  #totalMonths = 4680;
 
-  constructor({ markSize = 16, color } = {}) {
+  constructor({ markSize = 16, color, birthday } = {}) {
     this.#calendar = new Calendar({
-      marks: { filled: 2345, total: 5000, perRow: 78 },
+      marks: {
+        filled: moment().diff(birthday, "weeks"),
+        total: this.#totalMonths,
+        perRow: this.#weeksInYear,
+      },
       markProps: { size: markSize, color },
       scaleProps: { step: 10 },
       ctx: this.#ctx,
