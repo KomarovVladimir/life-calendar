@@ -12,20 +12,23 @@ export class MarkedField {
   }
 
   draw = (x = 0, y = 0) => {
+    const markSize = this.#mark.getSize();
     let row = 0;
     let column = 0;
 
-    console.log(x, y);
+    this.#mark.setTranslate(x, y);
 
-    this.#mark.setCtxTranslate(x, y);
-
-    for (let i = 0; i < this.#marksTotal; i++) {
+    for (let i = 1; i <= this.#marksTotal; i++) {
       if (i % this.#marksPerRow === 0) {
         row++;
         column = 0;
       }
 
-      this.#mark.draw(column, row, i <= this.#marksFilled);
+      this.#mark.draw(
+        column * markSize,
+        row * markSize,
+        i <= this.#marksFilled
+      );
 
       column++;
     }
