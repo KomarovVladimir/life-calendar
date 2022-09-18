@@ -18,8 +18,10 @@ export class MarkedField {
 
     this.#mark.setTranslate(x, y);
 
-    for (let i = 1; i <= this.#marksTotal; i++) {
-      if (i % this.#marksPerRow === 0) {
+    for (let i = 0; i < this.#marksTotal; i++) {
+      console.log(i % this.#marksPerRow);
+
+      if (i > 0 && i % this.#marksPerRow === 0) {
         row++;
         column = 0;
       }

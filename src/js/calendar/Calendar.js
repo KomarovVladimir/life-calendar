@@ -24,7 +24,7 @@ export class Calendar {
     this.#scale = new Scale({
       step,
       mark: this.#mark,
-      horizontalMarkersNumber: perRow,
+      horizontalMarkersNumber: Math.abs(total / perRow),
       verticalMarkersNumber: perRow,
       ctx,
     });
@@ -32,10 +32,12 @@ export class Calendar {
     this.#marksTotal = total;
   }
 
-  getWidth = () => this.#mark.getSize() * this.#marksPerRow;
+  getWidth = () =>
+    this.#mark.getSize() * this.#marksPerRow + this.#scale.getOffset();
 
   getHeight = () =>
-    this.#mark.getSize() * Math.ceil(this.#marksTotal / this.#marksPerRow);
+    this.#mark.getSize() * Math.ceil(this.#marksTotal / this.#marksPerRow) +
+    this.#scale.getOffset();
 
   draw = () => {
     this.#scale.draw();
