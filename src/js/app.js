@@ -12,12 +12,12 @@ export const daysNumber = moment.duration(lifespan, "years").asDays();
 export const daysGone = moment.duration(age, "years").asDays();
 export const daysLeft = moment.duration(lifespan - age, "years").asDays();
 
-console.log("DAYS LEFT: ", moment.duration(lifespan - age, "years").asDays());
-console.log("WEEKS LEFT: ", moment.duration(lifespan - age, "years").asWeeks());
-console.log(
-  "MONTH LEFT: ",
-  moment.duration(lifespan - age, "years").asMonths()
-);
+// console.log("DAYS LEFT: ", moment.duration(lifespan - age, "years").asDays());
+// console.log("WEEKS LEFT: ", moment.duration(lifespan - age, "years").asWeeks());
+// console.log(
+//   "MONTH LEFT: ",
+//   moment.duration(lifespan - age, "years").asMonths()
+// );
 
 const canvasItem = new Canvas();
 
