@@ -11,20 +11,23 @@ export class Scale {
   #verticalMarkersNumber;
   #horizontalMarkersNumber;
   #lineLength = 16;
+  #fontSize;
 
   constructor({
     step = 5,
     mark = null,
     verticalMarkersNumber = 0,
     horizontalMarkersNumber = 0,
+    fontSize = 24,
     ctx = null,
   }) {
     this.#ctx = ctx;
-    this.#ctx.font = "16px serif";
+
     this.#mark = mark;
     this.#step = step;
     this.#verticalMarkersNumber = verticalMarkersNumber;
     this.#horizontalMarkersNumber = horizontalMarkersNumber;
+    this.#fontSize = fontSize;
   }
 
   #drawLine = (offset, type) => {
@@ -43,8 +46,12 @@ export class Scale {
 
   #drawNumber = (number, x, y, baseline) => {
     this.#ctx.textBaseline = baseline;
+    this.#ctx.font = `bold ${this.#fontSize}px serif`;
     this.#ctx.fillText(number, x, y);
   };
+
+  //TODO: Consider getting x and y offsets if needed
+  getOffset = () => this.#fontSize + this.#lineLength;
 
   draw = () => {
     for (let i = 0; i < this.#verticalMarkersNumber; i += this.#step) {

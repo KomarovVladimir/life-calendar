@@ -11,9 +11,13 @@ export class MarkedField {
     this.#marksFilled = filled;
   }
 
-  draw = () => {
+  draw = (x = 0, y = 0) => {
     let row = 0;
     let column = 0;
+
+    console.log(x, y);
+
+    this.#mark.setCtxTranslate(x, y);
 
     for (let i = 0; i < this.#marksTotal; i++) {
       if (i % this.#marksPerRow === 0) {
@@ -21,9 +25,7 @@ export class MarkedField {
         column = 0;
       }
 
-      i <= this.#marksFilled
-        ? this.#mark.draw(column, row, true)
-        : this.#mark.draw(column, row, false);
+      this.#mark.draw(column, row, i <= this.#marksFilled);
 
       column++;
     }

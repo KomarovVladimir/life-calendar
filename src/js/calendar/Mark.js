@@ -17,6 +17,8 @@ export class Mark {
 
   getOffset = () => this.#fieldOffset;
 
+  setCtxTranslate = (x, y) => this.#ctx.translate(x, y);
+
   draw = (column, row, isFilled) => {
     if (isFilled) {
       this.#ctx.beginPath();

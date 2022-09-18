@@ -39,6 +39,6 @@ export class Calendar {
 
   draw = () => {
     this.#scale.draw();
-    this.#field.draw();
+    this.#field.draw(this.#scale.getOffset(), this.#scale.getOffset());
   };
 }

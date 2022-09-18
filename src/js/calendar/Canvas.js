@@ -7,9 +7,9 @@ export class Canvas {
 
   constructor({ markSize = 16, color } = {}) {
     this.#calendar = new Calendar({
-      marks: { filled: 50, total: 600, perRow: 73 },
+      marks: { filled: 3245, total: 9678, perRow: 100 },
       markProps: { size: markSize, color },
-      scaleProps: { step: 3 },
+      scaleProps: { step: 10 },
       ctx: this.#ctx,
     });
     this.#canvas.width = this.#calendar.getWidth();
