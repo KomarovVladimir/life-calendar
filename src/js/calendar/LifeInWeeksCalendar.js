@@ -22,9 +22,14 @@ export class LifeInWeeksCalendar {
     });
     this.#canvas.width = this.#calendar.getWidth();
     this.#canvas.height = this.#calendar.getHeight();
+    this.#canvas.id = "calendar";
   }
 
   render = (container) => {
+    const calendar = document.getElementById("calendar");
+    if (calendar) {
+      container.removeChild(calendar);
+    }
     this.#calendar.draw();
     container.append(this.#canvas);
   };
