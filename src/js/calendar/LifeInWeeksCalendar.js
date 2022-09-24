@@ -9,7 +9,7 @@ export class LifeInWeeksCalendar {
   #weeksInYear = 52;
   #totalMonths = 4680;
 
-  constructor({ markSize = 16, color, birthday } = {}) {
+  constructor({ markSize = 24, color, birthday } = {}) {
     this.#calendar = new Calendar({
       marks: {
         filled: moment().diff(birthday, "weeks"),

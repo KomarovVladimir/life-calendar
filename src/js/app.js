@@ -12,6 +12,10 @@ birthdayForm.addEventListener("submit", async (event) => {
 
   birthday = new FormData(birthdayForm).get("birthday");
 
+  if (!birthday) {
+    return;
+  }
+
   const lifeInWeeksCalendar = new LifeInWeeksCalendar({
     birthday: moment(birthday),
   });
