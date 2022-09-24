@@ -17,6 +17,7 @@ birthdayForm.addEventListener("submit", async (event) => {
   }
 
   const lifeInWeeksCalendar = new LifeInWeeksCalendar({
+    color: "#0e7c7b",
     birthday: moment(birthday),
   });
 
